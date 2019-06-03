@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 desc 'This task is called by the Heroku scheduler add-on'
-task update_feed: :environment do
+task daily_charge: :environment do
   puts 'Updating feed...'
+  Player.daily_charge
   puts 'done.'
-end
-
-task send_reminders: :environment do
-  puts 'send reminders.'
 end

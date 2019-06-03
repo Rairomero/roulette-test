@@ -6,6 +6,8 @@ class Player < ApplicationRecord
 
   def daily_charge
     all.each do |player|
+      player.balance += 10_000
+      player.save
     end
   end
 end
