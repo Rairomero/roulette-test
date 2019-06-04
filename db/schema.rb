@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,34 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_603_202_141) do
+ActiveRecord::Schema.define(version: 2019_06_04_002034) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'bets', force: :cascade do |t|
-    t.bigint 'player_id'
-    t.bigint 'round_id'
-    t.integer 'amount'
-    t.integer 'target'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['player_id'], name: 'index_bets_on_player_id'
-    t.index ['round_id'], name: 'index_bets_on_round_id'
+  create_table "bets", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "round_id"
+    t.integer "amount"
+    t.integer "target"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_bets_on_player_id"
+    t.index ["round_id"], name: "index_bets_on_round_id"
   end
 
-  create_table 'players', force: :cascade do |t|
-    t.string 'name'
-    t.string 'lastname'
-    t.integer 'balance', default: 10_000
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "forecasts", force: :cascade do |t|
+    t.date "date"
+    t.boolean "hot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'rounds', force: :cascade do |t|
-    t.integer 'result'
-    t.integer 'pot'
+  create_table "players", force: :cascade do |t|
+    t.string "name"
+    t.string "lastname"
+    t.integer "balance", default: 10000
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key 'bets', 'players'
-  add_foreign_key 'bets', 'rounds'
+  create_table "rounds", force: :cascade do |t|
+    t.integer "result"
+    t.integer "pot"
+  end
+
+  add_foreign_key "bets", "players"
+  add_foreign_key "bets", "rounds"
 end
