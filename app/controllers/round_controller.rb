@@ -4,4 +4,6 @@ class RoundController < ApplicationController
   def index
     @rounds = Round.all
   end
+
+  def show; end
 end
