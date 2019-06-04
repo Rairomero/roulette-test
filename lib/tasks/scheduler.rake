@@ -12,3 +12,9 @@ task request_forecast: :environment do
   Forecast.request_forecast
   puts 'done.'
 end
+
+task play_round: :environment do
+  puts 'Playing round...'
+  Round.play_round
+  puts 'done.'
+end
