@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Round < ApplicationRecord
+  paginates_per 10
   before_create :update_pot
   enum result: %i[verde rojo negro]
   has_many :bets
@@ -27,9 +28,9 @@ class Round < ApplicationRecord
 
   def pay_round(bet)
     case bet.target
-    when :verde then player.balance += bet.amount * 15
-    when :rojo then player.balance += bet.amount * 2
-    when :negro then player.balance += bet.amount * 2
+    when 'verde' then bet.player.balance += bet.amount * 15
+    when 'rojo' then bet.player.balance += bet.amount * 2
+    when 'negro' then bet.player.balance += bet.amount * 2
     end
   end
 

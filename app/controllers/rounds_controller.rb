@@ -2,7 +2,7 @@
 
 class RoundsController < ApplicationController
   def index
-    @rounds = Round.all
+    @rounds = Round.all.page(params[:page])
   end
 
   def show
