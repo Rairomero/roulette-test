@@ -15,6 +15,7 @@ end
 
 task play_round: :environment do
   puts 'Playing round...'
+  puts 'Esto se ejecuto'
   Round.play_round
   puts 'done.'
 end
