@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Round:</strong>
+  <%= @round.id %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @round.result %>
+</p>
+
+<p>
+  <strong>Pot:</strong>
+  <%= @round.pot %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Bet</th>
+      <th>Target</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @round.bets.each do |bet| %>
+      <tr>
+        <td><%= bet.player.name %> <%= bet.player.lastname%></td>
+        <td><%= bet.amount %></td>
+        <td><%= bet.target %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', root_path %>
