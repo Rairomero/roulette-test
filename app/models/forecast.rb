@@ -10,4 +10,9 @@ class Forecast < ApplicationRecord
         .find_or_create_by(date: DateTime.strptime(day['time'].to_s, '%s'))
     end
   end
+
+  def self.comming_hot_days?
+    request_forecast if count.zero?
+    where(date: Date.today..Date.today + 7.days).pluck(:hot).include?(true)
+  end
 end
