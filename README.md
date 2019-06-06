@@ -36,3 +36,14 @@ bundle exec rails db:create db:migrate db:seed
 ```
 bundle exec rails s
 ```
+### Ejecutar las tareas en ambientes de prueba
+
+En la consola, ejecutar:
+```
+rake nombre_de_tarea
+```
+Puedes encontrar las tareas creadas en el archivo: `lib/tasks/scheduler.rake`
+Ejemplo:
+```
+rake play_round
+```
